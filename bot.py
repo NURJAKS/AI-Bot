@@ -2,7 +2,14 @@ import telebot
 import requests
 import sys
 import time
-from config import BOT_TOKEN, OPENROUTER_API_KEY  
+import os
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+if not BOT_TOKEN or not OPENROUTER_API_KEY:
+    raise ValueError("Missing environment variables!")
+  
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
